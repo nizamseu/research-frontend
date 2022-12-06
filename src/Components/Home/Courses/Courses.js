@@ -26,7 +26,7 @@ const Courses = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		const url = "https://fierce-caverns-90976.herokuapp.com/courses";
+		const url = "https://research-backend-production.up.railway.app/courses";
 		axios.get(url).then((res) => {
 			dispatch(addCourse(res?.data));
 		});

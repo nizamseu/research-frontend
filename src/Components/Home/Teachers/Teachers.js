@@ -1,79 +1,82 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-	faFacebook,
-	faLinkedin,
-	faTwitter,
+  faFacebook,
+  faLinkedin,
+  faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import "./Teachers.css";
 
 const Teachers = () => {
-	const [teachers, setTeachers] = useState([]);
-	useEffect(() => {
-		fetch("https://fierce-caverns-90976.herokuapp.com/teachers")
-			.then((res) => res.json())
-			.then((data) => setTeachers(data));
-	}, []);
-	console.log("teachers", teachers);
+  const [teachers, setTeachers] = useState([]);
+  useEffect(() => {
+    fetch("https://research-backend-production.up.railway.app/teachers")
+      .then((res) => res.json())
+      .then((data) => setTeachers(data));
+  }, []);
+  console.log("teachers", teachers);
 
-	return (
-		<div className='teachers mb-20'>
-			<div className='team-area'>
-				<div className='text-red-500 text-center text-3xl uppercase font-black mt-5 mb-8'>
-					Our Instructors
-					<p className='text-sm text-black px-6 pt-3'>
-						You don't have to struggle alone, you've got our assistance and
-						help.
-					</p>
-				</div>
-				<div className='grid gap-6 grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 mx-auto'>
-					{teachers?.slice(0, 3).map((teacher, key) => (
-						<div className='box pb-6'>
-							<div className='teachers-box'>
-								<img src={teacher?.photoURL} alt={teacher?.displayName} />
-							</div>
-							<div>
-								<h2 className='mt-4'>{teacher?.displayName}</h2>
-								<span>{teacher?.designation}</span>
-								<ul>
-									<li>
-										<a
-											target='_blank'
-											rel='noopener noreferrer'
-											href={teacher?.facebook}>
-											<FontAwesomeIcon
-												className='text-gray-700 text-3xl mx-2'
-												icon={faFacebook}
-											/>
-										</a>
-									</li>
-									<li>
-										<a
-											target='_blank'
-											rel='noopener noreferrer'
-											href={teacher?.twitter}>
-											<FontAwesomeIcon
-												className='text-gray-700 text-3xl mx-2'
-												icon={faTwitter}
-											/>
-										</a>
-									</li>
-									<li>
-										<a
-											target='_blank'
-											rel='noopener noreferrer'
-											href={teacher?.linkedin}>
-											<FontAwesomeIcon
-												className='text-gray-700 text-3xl mx-2'
-												icon={faLinkedin}
-											/>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					))}
-					{/* 
+  return (
+    <div className="teachers mb-20">
+      <div className="team-area">
+        <div className="text-red-500 text-center text-3xl uppercase font-black mt-5 mb-8">
+          Our Instructors
+          <p className="text-sm text-black px-6 pt-3">
+            You don't have to struggle alone, you've got our assistance and
+            help.
+          </p>
+        </div>
+        <div className="grid gap-6 grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 mx-auto">
+          {teachers?.slice(0, 3).map((teacher, key) => (
+            <div className="box pb-6">
+              <div className="teachers-box">
+                <img src={teacher?.photoURL} alt={teacher?.displayName} />
+              </div>
+              <div>
+                <h2 className="mt-4">{teacher?.displayName}</h2>
+                <span>{teacher?.designation}</span>
+                <ul>
+                  <li>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={teacher?.facebook}
+                    >
+                      <FontAwesomeIcon
+                        className="text-gray-700 text-3xl mx-2"
+                        icon={faFacebook}
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={teacher?.twitter}
+                    >
+                      <FontAwesomeIcon
+                        className="text-gray-700 text-3xl mx-2"
+                        icon={faTwitter}
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={teacher?.linkedin}
+                    >
+                      <FontAwesomeIcon
+                        className="text-gray-700 text-3xl mx-2"
+                        icon={faLinkedin}
+                      />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          ))}
+          {/* 
 					<div className='box pb-6'>
 						<div className='teachers-box'>
 							<img
@@ -215,10 +218,10 @@ const Teachers = () => {
 							</ul>
 						</div>
 					</div>*/}
-				</div>
-			</div>
-		</div>
-	);
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Teachers;
